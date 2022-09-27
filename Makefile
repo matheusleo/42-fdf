@@ -1,9 +1,9 @@
 # Mandatory part
 NAME		:= fdf
 INCLUDES	:= -I includes
-SOURCE		:= ./source/main.c
+SOURCE		:= ./source/main.c ./source/validator.c
 OBJS		:= $(SOURCE:./source/%.c=./objects/%.o)
-HEADERS		:= ./includes/fdf.h
+HEADERS		:= ./includes/fdf.h ./includes/libft.h
 
 # General purpose
 LIBFT		:= libft.a
@@ -21,12 +21,13 @@ GREEN		:= \033[0;32m
 
 $(NAME):	./libft/$(LIBFT) $(OBJS) $(HEADERS)
 			cp ./libft/$(LIBFT) .
+			$(CC) $(C_FLAGS) $(INCLUDES) -o $(NAME) $(OBJS) $(LIBFT)
 
 ./libft/$(LIBFT):
 		make -C libft/
 
 ./objects/%.o:		./source/%.c
-			$(CC) -c $(CFLAGS) -o $@ $<
+			$(CC) -c $(C_FLAGS) $(INCLUDES) -o $@ $<
 
 all: 		$(NAME)
 
