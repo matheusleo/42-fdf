@@ -1,33 +1,34 @@
 # Mandatory part
-NAME		:= fdf
-INCLUDES	:= -I includes
-SOURCE		:= ./source/main.c ./source/validator.c
-OBJS		:= $(SOURCE:./source/%.c=./objects/%.o)
-HEADERS		:= ./includes/fdf.h ./includes/libft.h
+NAME			:= fdf
+INCLUDES		:= -I includes
+SOURCE			:= ./source/main.c ./source/validator.c ./source/app.c
+OBJS			:= $(SOURCE:./source/%.c=./objects/%.o)
+HEADERS			:= ./includes/fdf.h ./includes/libft.h
 
 # General purpose
-LIBFT		:= libft.a
-CC			:= cc
-C_FLAGS		:= -Wall -Werror -Wextra -lm
-MLX_FLAGS	:= -lmlx -lXext -lX11
-AR			:= ar
-AR_FLAGS	:= -rcs
-RM			:= rm -rf
+LIBFT			:= libft.a
+CC				:= cc
+C_FLAGS			:= -Wall -Werror -Wextra -lm
+MLX_FLAGS		:= -lmlx -lXext -lX11
+VALGRIND_FLAGS 	:= --leak-check=full
+AR				:= ar
+AR_FLAGS		:= -rcs
+RM				:= rm -rf
 
 # Colors
-OFF			:= \033[0m
-RED			:= \033[0;31m
-GREEN		:= \033[0;32m
+OFF				:= \033[0m
+RED				:= \033[0;31m
+GREEN			:= \033[0;32m
 
 $(NAME):	./libft/$(LIBFT) $(OBJS) $(HEADERS)
 			cp ./libft/$(LIBFT) .
-			$(CC) $(C_FLAGS) $(INCLUDES) -o $(NAME) $(OBJS) $(LIBFT)
+			$(CC) $(INCLUDES) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAGS)
 
 ./libft/$(LIBFT):
 		make -C libft/
 
 ./objects/%.o:		./source/%.c
-			$(CC) -c $(C_FLAGS) $(INCLUDES) -o $@ $<
+			$(CC) -c $(INCLUDES) -o $@ $< $(MLX_FLAGS)
 
 all: 		$(NAME)
 
@@ -40,5 +41,11 @@ fclean:		clean
 			make -C libft/ fclean
 
 re:			fclean all
+
+test:		$(NAME)
+			@./$(NAME) maps/42.fdf
+
+leak:		$(NAME)
+			@valgrind $(VALGRIND_FLAGS) ./$(NAME) maps/42.fdf
 
 .PHONY:		all clean fclean re
