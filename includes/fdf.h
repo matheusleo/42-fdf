@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/09/29 22:56:22 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/09/30 09:33:13 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ typedef struct s_app
 {
 	void	*mlx;
 	void	*win;
+	void	*img;
+	char	*img_addr;
+	int		img_bpp;
+	int		img_line_size;
+	int		img_endian;
 }				t_app;
 
 // Map related struct
@@ -35,7 +40,7 @@ typedef struct s_fdf
 
 // General macros
 # define WIN_HEIGHT 540
-# define WIN_LENGTH 960
+# define WIN_WIDTH 960
 
 // Key code macros
 # define ESC_CODE 65307
