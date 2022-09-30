@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/09/27 22:33:32 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/09/29 22:56:22 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,21 @@
 # include <stdio.h>
 # include <mlx.h>
 
+// MLX related struct
 typedef struct s_app
 {
 	void	*mlx;
 	void	*win;
 }				t_app;
+
+// Map related struct
+typedef struct s_fdf
+{
+	int		cols;
+	int		rows;
+	int		map_fd;
+	t_list	*map_matrix;
+}				t_fdf;
 
 // General macros
 # define WIN_HEIGHT 540
@@ -44,9 +54,13 @@ typedef struct s_app
 # define ON_DESTROY 17
 
 // Window management functions
-void	init_app();
+void	init_app(void);
 
 // User's input related functions
-int	validate_user_input(int argc, char *argv[]);
+int		validate_user_input(int argc, char *argv[]);
+
+// Map related functions
+int		*parse_line(int map_fd);
+t_list	*parse_map(int map_fd);
 
 #endif
