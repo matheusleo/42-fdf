@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/09/30 09:33:13 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/09/30 10:17:31 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <mlx.h>
+
+// Map related struct
+typedef struct s_fdf
+{
+	int		cols;
+	int		rows;
+	int		map_fd;
+	t_list	*map_matrix;
+}				t_fdf;
 
 // MLX related struct
 typedef struct s_app
@@ -27,16 +36,8 @@ typedef struct s_app
 	int		img_bpp;
 	int		img_line_size;
 	int		img_endian;
+	t_fdf	*fdf;
 }				t_app;
-
-// Map related struct
-typedef struct s_fdf
-{
-	int		cols;
-	int		rows;
-	int		map_fd;
-	t_list	*map_matrix;
-}				t_fdf;
 
 // General macros
 # define WIN_HEIGHT 540
@@ -58,8 +59,13 @@ typedef struct s_fdf
 // Events code macros
 # define ON_DESTROY 17
 
+// Colors code macros
+# define RED_CODE 16711680
+# define GREEN_CODE 65280
+# define BLUE_CODE 255
+
 // Window management functions
-void	init_app(void);
+t_app	*init_app(t_fdf *fdf);
 
 // User's input related functions
 int		validate_user_input(int argc, char *argv[]);
