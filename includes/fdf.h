@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/09/30 10:17:31 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:56:38 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,8 @@ int		validate_user_input(int argc, char *argv[]);
 // Map related functions
 int		*parse_line(int map_fd);
 t_list	*parse_map(int map_fd);
+
+// Plot pixels related functions
+void	put_pixel(t_app *app, int x, int y, int color);
 
 #endif
