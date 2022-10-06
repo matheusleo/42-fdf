@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/03 23:56:38 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/05 10:04:31 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_app
 	int		img_bpp;
 	int		img_line_size;
 	int		img_endian;
+	int		color;
 	t_fdf	*fdf;
 }				t_app;
 
@@ -71,10 +72,11 @@ t_app	*init_app(t_fdf *fdf);
 int		validate_user_input(int argc, char *argv[]);
 
 // Map related functions
-int		*parse_line(int map_fd);
-t_list	*parse_map(int map_fd);
+int		*parse_line(char *line);
+t_list	*parse_map(t_fdf *fdf);
 
 // Plot pixels related functions
 void	put_pixel(t_app *app, int x, int y, int color);
+void	bresenham(t_app *app, int x_init, int y_init, int x_final, int y_final);
 
 #endif
