@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/05 10:04:31 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/09 21:00:32 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ typedef struct s_app
 # define RED_CODE 16711680
 # define GREEN_CODE 65280
 # define BLUE_CODE 255
+# define MANGO_CODE 1693956097
+# define SUPER_PINK_CODE 1685485805
+# define VIOLET_CODE 1692097210
 
 // Window management functions
 t_app	*init_app(t_fdf *fdf);
