@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:50:42 by mleonard          #+#    #+#             */
-/*   Updated: 2022/08/29 22:36:20 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/09 17:58:16 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,8 @@ int		u_print_padding(char c, int length);
 int		u_print_str(char *str);
 char	*is_format_char(char c);
 char	*is_flag_char(char c);
+
+// My functions
+void	*ft_ternary(int codition, void *return_true, void *return_false);
 
 #endif
