@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/09 21:00:32 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:50:38 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,8 @@ t_list	*parse_map(t_fdf *fdf);
 // Plot pixels related functions
 void	put_pixel(t_app *app, int x, int y, int color);
 void	bresenham(t_app *app, int x_init, int y_init, int x_final, int y_final);
+
+// Utils
+void	lstiter(t_list *lst, t_app *app, void (*f)(void *, void *));
 
 #endif
