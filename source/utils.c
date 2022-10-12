@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:50:00 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 12:15:37 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 12:36:53 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	lstiter(t_list *lst, t_app *app, void (*f)(void *, void *))
 	cur_node = lst;
 	while (cur_node && cur_node->content)
 	{
-		f(cur_node, app);
+		f(app, cur_node);
 		cur_node = cur_node->next;
 	}
 }
