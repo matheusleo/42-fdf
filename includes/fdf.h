@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 11:50:38 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 12:14:29 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void	bresenham(t_app *app, int x_init, int y_init, int x_final, int y_final);
 
 // Utils
 void	lstiter(t_list *lst, t_app *app, void (*f)(void *, void *));
+int		ternary(int codition, int return_true, int return_false);
 
 #endif
