@@ -6,17 +6,14 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:51:52 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 23:32:38 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 23:49:10 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 #define EDGE 10
 
-/*
-it is assumed that the Xo from the original equation is always zero (0)
-*/
-int	calculate_x_screen(int x_real, int z_real, t_app *app)
+static int	calculate_x_screen(int x_real, int z_real, t_app *app)
 {
 	t_fdf	*fdf;
 	int		x_screen;
@@ -28,7 +25,7 @@ int	calculate_x_screen(int x_real, int z_real, t_app *app)
 	return (x_screen + (WIN_WIDTH / 2 + fdf->x_offset));
 }
 
-int	calculate_y_screen(int x_real, int z_real, int y_real, t_app *app)
+static int	calculate_y_screen(int x_real, int z_real, int y_real, t_app *app)
 {
 	t_fdf	*fdf;
 	int		y_screen;
@@ -42,7 +39,7 @@ int	calculate_y_screen(int x_real, int z_real, int y_real, t_app *app)
 	return (y_screen + (WIN_HEIGHT / 2 + fdf->y_offset));
 }
 
-void	put_line(t_app *app, t_list *line_node, int cur_row)
+static void	put_line(t_app *app, t_list *line_node, int cur_row)
 {
 	int			*line;
 	int			*line_next;

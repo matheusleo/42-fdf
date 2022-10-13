@@ -6,13 +6,13 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:24:01 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 23:35:56 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 23:47:56 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-t_fdf	init_fdf(void)
+static t_fdf	init_fdf(void)
 {
 	t_fdf	fdf;
 

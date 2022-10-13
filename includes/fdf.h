@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 23:21:15 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 23:49:20 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ typedef struct s_app
 # define VIOLET_CODE 1692097210
 
 // Window && Image management functions
-t_app	*init_app(t_fdf *fdf);
 void	clean_win(t_app *app);
 int		shutdown_app(t_app *app);
+t_app	*init_app(t_fdf *fdf);
 
 // User's input related functions
 int		validate_user_input(int argc, char *argv[]);
@@ -90,13 +90,16 @@ int		*parse_line(char *line);
 t_list	*parse_map(t_fdf *fdf);
 
 // Plot pixels related functions
-void	put_pixel(t_app *app, int x, int y, int color);
 void	put_map(t_app *app);
+void	put_pixel(t_app *app, int x, int y, int color);
 void	bresenham(t_app *app, int x_init, int y_init, int x_final, int y_final);
 
 // Key handler functions
-int		key_handler(int keycode, t_app *app);
 int		translate_map(int keycode, t_app *app);
+int		zoom_map(int keycode, t_app *app);
+int		color_handler(int keycode, t_app *app);
+int		level_handler(int keycode, t_app *app);
+int		key_handler(int keycode, t_app *app);
 
 // Utils
 void	lstiter(t_list *lst, t_app *app, void (*f)(void *, void *, int));
