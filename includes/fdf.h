@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 22:23:44 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 22:25:41 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,12 @@ void	put_pixel(t_app *app, int x, int y, int color);
 void	put_map(t_app *app);
 void	bresenham(t_app *app, int x_init, int y_init, int x_final, int y_final);
 
+// Key handler functions
+int		key_handler(int keycode, t_app *app);
+int		translate_map(int keycode, t_app *app);
+
 // Utils
-void	lstiter(t_list *lst, t_app *app, void (*f)(void *, void *));
+void	lstiter(t_list *lst, t_app *app, void (*f)(void *, void *, int));
 int		ternary(int codition, int return_true, int return_false);
 
 #endif
