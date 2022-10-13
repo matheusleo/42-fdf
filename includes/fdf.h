@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 12:49:20 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 22:23:44 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ typedef struct s_fdf
 	int		cols;
 	int		rows;
 	int		map_fd;
+	int		edge_len;
+	int		zoom;
+	int		x_offset;
+	int		y_offset;
 	t_list	*map_matrix;
 }				t_fdf;
 
@@ -69,8 +73,10 @@ typedef struct s_app
 # define SUPER_PINK_CODE 1685485805
 # define VIOLET_CODE 1692097210
 
-// Window management functions
+// Window && Image management functions
 t_app	*init_app(t_fdf *fdf);
+void	clean_win(t_app *app);
+int		shutdown_app(t_app *app);
 
 // User's input related functions
 int		validate_user_input(int argc, char *argv[]);
@@ -81,6 +87,7 @@ t_list	*parse_map(t_fdf *fdf);
 
 // Plot pixels related functions
 void	put_pixel(t_app *app, int x, int y, int color);
+void	put_map(t_app *app);
 void	bresenham(t_app *app, int x_init, int y_init, int x_final, int y_final);
 
 // Utils
