@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:24:01 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/05 23:24:36 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 22:02:23 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ t_fdf	init_fdf(void)
 	fdf.cols = 0;
 	fdf.rows = 0;
 	fdf.map_fd = 0;
+	fdf.edge_len = 10;
+	fdf.zoom = 1;
+	fdf.x_offset = 0;
+	fdf.y_offset = 0;
 	fdf.map_matrix = NULL;
 	return (fdf);
 }

@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 22:04:26 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 21:59:42 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 22:18:45 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	clean_win(t_app *app)
 	mlx_put_image_to_window(app->mlx, app->win, app->img, 0, 0);
 }
 
-static int	shutdown_app(t_app *app)
+int	shutdown_app(t_app *app)
 {
 	t_fdf	*fdf;
 
@@ -35,13 +35,6 @@ static int	shutdown_app(t_app *app)
 	free(app->mlx);
 	free(app);
 	exit (0);
-}
-
-static int	key_handler(int keycode, t_app *app)
-{
-	if (keycode == ESC_CODE)
-		shutdown_app(app);
-	return (0);
 }
 
 t_app	*init_app(t_fdf *fdf)
