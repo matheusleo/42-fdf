@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 22:25:41 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 22:37:26 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ typedef struct s_app
 }				t_app;
 
 // General macros
-# define WIN_HEIGHT 540
-# define WIN_WIDTH 960
+# define WIN_HEIGHT 720
+# define WIN_WIDTH 1080
 
 // Key code macros
 # define ESC_CODE 65307
