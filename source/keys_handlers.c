@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 19:27:08 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 22:21:26 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 22:42:30 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,19 @@ int	translate_map(int keycode, t_app *app)
 	return (1);
 }
 
+int	zoom_map(int keycode, t_app *app)
+{
+	t_fdf	*fdf;
+
+	fdf = app->fdf;
+	if (keycode == PLUS_CODE)
+		fdf->zoom *= 2;
+	else if (keycode == MINUS_CODE)
+		fdf->zoom /= 2;
+	put_map(app);
+	return (1);
+}
+
 int	key_handler(int keycode, t_app *app)
 {
 	static int	translation_keys[4] = {W_CODE, A_CODE, S_CODE, D_CODE};
@@ -38,5 +51,7 @@ int	key_handler(int keycode, t_app *app)
 		shutdown_app(app);
 	else if (ft_memchr(translation_keys, keycode, sizeof(int) * 4))
 		translate_map(keycode, app);
+	else if (ft_memchr(zoom_keys, keycode, sizeof(int) * 2))
+		zoom_map(keycode, app);
 	return (1);
 }
