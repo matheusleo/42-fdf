@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 19:27:08 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 23:38:55 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 23:59:56 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	color_handler(int keycode, t_app *app)
 int	level_handler(int keycode, t_app *app)
 {
 	if (keycode == GT_CODE)
-		app->fdf->level_height += app->fdf->edge_len;
+		app->fdf->level_height += 2;
 	else if (keycode == LT_CODE)
-		app->fdf->level_height -= app->fdf->edge_len;
+		app->fdf->level_height -= 2;
 	put_map(app);
 	return (1);
 }
