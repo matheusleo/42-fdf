@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:51:52 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 22:08:02 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 22:54:19 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,5 @@ void	put_map(t_app *app)
 
 	clean_win(app);
 	matrix_head = app->fdf->map_matrix;
-	app->color = BLUE_CODE;
 	lstiter(matrix_head, app, put_line);
 }

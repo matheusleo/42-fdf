@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 22:37:26 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 22:56:54 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_app
 # define A_CODE 97
 # define S_CODE 115
 # define D_CODE 100
+# define Q_CODE 113
+# define E_CODE 101
 # define PLUS_CODE 61
 # define MINUS_CODE 45
 # define UP_CODE 65362
@@ -66,11 +68,10 @@ typedef struct s_app
 # define ON_DESTROY 17
 
 // Colors code macros
+# define WHITE_CODE 1694498815
 # define RED_CODE 16711680
 # define GREEN_CODE 65280
-# define BLUE_CODE 255
 # define MANGO_CODE 1693956097
-# define SUPER_PINK_CODE 1685485805
 # define VIOLET_CODE 1692097210
 
 // Window && Image management functions
