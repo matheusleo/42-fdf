@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 20:57:06 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 15:36:02 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/13 01:55:20 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,4 @@ void	bresenham(t_app *app, int x_init, int y_init, int x_final, int y_final)
 		bresenham_fast_x(app, x_init, y_init, x_final, y_final);
 	else
 		bresenham_fast_y(app, x_init, y_init, x_final, y_final);
-	mlx_put_image_to_window(app->mlx, app->win, app->img, 0, 0);
 }

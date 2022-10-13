@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:51:52 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 23:49:10 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/13 01:53:24 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ void	put_map(t_app *app)
 	clean_win(app);
 	matrix_head = app->fdf->map_matrix;
 	lstiter(matrix_head, app, put_line);
+	mlx_put_image_to_window(app->mlx, app->win, app->img, 0, 0);
 }
