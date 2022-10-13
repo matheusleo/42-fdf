@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 22:56:54 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 23:21:15 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_fdf
 	int		zoom;
 	int		x_offset;
 	int		y_offset;
+	int		level_height;
 	t_list	*map_matrix;
 }				t_fdf;
 
@@ -57,6 +58,8 @@ typedef struct s_app
 # define D_CODE 100
 # define Q_CODE 113
 # define E_CODE 101
+# define GT_CODE 46
+# define LT_CODE 44
 # define PLUS_CODE 61
 # define MINUS_CODE 45
 # define UP_CODE 65362

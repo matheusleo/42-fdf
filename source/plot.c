@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:51:52 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 22:54:19 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/12 23:32:38 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ int	calculate_y_screen(int x_real, int z_real, int y_real, t_app *app)
 	t_fdf	*fdf;
 	int		y_screen;
 	int		edge;
+	int		level;
 
 	fdf = app->fdf;
 	edge = fdf->edge_len * fdf->zoom;
-	y_screen = ((x_real + z_real) * sin(0.46) - y_real + 1) * edge;
+	level = y_real * fdf->level_height * fdf->zoom;
+	y_screen = ((x_real + z_real) * sin(0.46) - y_real + 1) * edge - level;
 	return (y_screen + (WIN_HEIGHT / 2 + fdf->y_offset));
 }
 
