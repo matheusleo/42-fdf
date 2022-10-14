@@ -5,7 +5,7 @@ SOURCE			:=	./source/main.c ./source/validator.c \
 					./source/app.c ./source/parser.c \
 					./source/pixels.c ./source/bresenham.c \
 					./source/utils.c ./source/plot.c \
-					./source/keys_handlers.c
+					./source/key_handlers.c
 OBJS			:=	$(SOURCE:./source/%.c=./objects/%.o)
 HEADERS			:=	./includes/fdf.h ./includes/libft.h
 
