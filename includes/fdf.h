@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 23:49:20 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:52:54 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ typedef struct s_app
 	int		color;
 	t_fdf	*fdf;
 }				t_app;
+
+// Bresenham related struct
+typedef struct s_coord
+{
+	int	x;
+	int	y;
+}				t_coord;
 
 // General macros
 # define WIN_HEIGHT 720
@@ -92,7 +99,7 @@ t_list	*parse_map(t_fdf *fdf);
 // Plot pixels related functions
 void	put_map(t_app *app);
 void	put_pixel(t_app *app, int x, int y, int color);
-void	bresenham(t_app *app, int x_init, int y_init, int x_final, int y_final);
+void	bresenham(t_app *app, t_coord *pos_i, t_coord *pos_f);
 
 // Key handler functions
 int		translate_map(int keycode, t_app *app);

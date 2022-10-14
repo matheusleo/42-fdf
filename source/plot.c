@@ -6,12 +6,11 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:51:52 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/13 01:53:24 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:48:34 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
-#define EDGE 10
 
 static int	calculate_x_screen(int x_real, int z_real, t_app *app)
 {
@@ -39,11 +38,22 @@ static int	calculate_y_screen(int x_real, int z_real, int y_real, t_app *app)
 	return (y_screen + (WIN_HEIGHT / 2 + fdf->y_offset));
 }
 
+static t_coord	calc_coord(t_app *app, int x_real, int z_real, int y_real)
+{
+	t_coord	coord;
+
+	coord.x = calculate_x_screen(x_real, z_real, app);
+	coord.y = calculate_y_screen(x_real, z_real, y_real, app);
+	return (coord);
+}
+
 static void	put_line(t_app *app, t_list *line_node, int cur_row)
 {
 	int			*line;
 	int			*line_next;
 	int			cur_col;
+	t_coord		coord_i;
+	t_coord		coord_f;
 
 	line = line_node->content;
 	line_next = line_node->next->content;
@@ -51,11 +61,17 @@ static void	put_line(t_app *app, t_list *line_node, int cur_row)
 	while (cur_col < app->fdf->cols)
 	{
 		if (cur_col < app->fdf->cols - 1 && (line[cur_col + 1] + 1))
-			bresenham(app, calculate_x_screen(cur_col, cur_row, app), calculate_y_screen(cur_col, cur_row, line[cur_col], app), \
-			calculate_x_screen(cur_col + 1, cur_row, app), calculate_y_screen(cur_col + 1, cur_row, line[cur_col + 1], app));
+		{
+			coord_i = calc_coord(app, cur_col, cur_row, line[cur_col]);
+			coord_f = calc_coord(app, cur_col + 1, cur_row, line[cur_col + 1]);
+			bresenham(app, &coord_i, &coord_f);
+		}
 		if (line_next)
-			bresenham(app, calculate_x_screen(cur_col, cur_row, app), calculate_y_screen(cur_col, cur_row, line[cur_col], app), \
-			calculate_x_screen(cur_col, cur_row + 1, app), calculate_y_screen(cur_col, cur_row + 1, line_next[cur_col], app));
+		{
+			coord_i = calc_coord(app, cur_col, cur_row, line[cur_col]);
+			coord_f = calc_coord(app, cur_col, cur_row + 1, line_next[cur_col]);
+			bresenham(app, &coord_i, &coord_f);
+		}
 		cur_col++;
 	}
 }

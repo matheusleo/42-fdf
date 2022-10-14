@@ -6,13 +6,13 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 20:57:06 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/13 01:55:20 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:49:00 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-static void	bresenham_fast_x(t_app *app, int x_i, int y_i, int x_f, int y_f)
+static void	bresenham_fast_x(t_app *app, t_coord *pos_i, t_coord *pos_f)
 {
 	int		d_x;
 	int		d_y;
@@ -20,25 +20,25 @@ static void	bresenham_fast_x(t_app *app, int x_i, int y_i, int x_f, int y_f)
 	int		inc_y;
 	double	eps;
 
-	d_x = x_f - x_i;
-	d_y = y_f - y_i;
+	d_x = pos_f->x - pos_i->x;
+	d_y = pos_f->y - pos_i->y;
 	inc_x = ternary(d_x > 0, 1, -1);
 	inc_y = ternary(d_y > 0, 1, -1);
 	eps = 0;
-	while (ternary(inc_x < 0, x_i >= x_f, x_i <= x_f))
+	while (ternary(inc_x < 0, pos_i->x >= pos_f->x, pos_i->x <= pos_f->x))
 	{
-		put_pixel(app, x_i, y_i, app->color);
+		put_pixel(app, pos_i->x, pos_i->y, app->color);
 		eps += abs(d_y);
 		if (eps >= abs(d_x))
 		{
-			y_i += inc_y;
+			pos_i->y += inc_y;
 			eps -= abs(d_x);
 		}
-		x_i += inc_x;
+		pos_i->x += inc_x;
 	}
 }
 
-static void	bresenham_fast_y(t_app *app, int x_i, int y_i, int x_f, int y_f)
+static void	bresenham_fast_y(t_app *app, t_coord *pos_i, t_coord *pos_f)
 {
 	int		d_x;
 	int		d_y;
@@ -46,33 +46,33 @@ static void	bresenham_fast_y(t_app *app, int x_i, int y_i, int x_f, int y_f)
 	int		inc_y;
 	double	eps;
 
-	d_x = x_f - x_i;
-	d_y = y_f - y_i;
+	d_x = pos_f->x - pos_i->x;
+	d_y = pos_f->y - pos_i->y;
 	inc_x = ternary(d_x > 0, 1, -1);
 	inc_y = ternary(d_y > 0, 1, -1);
 	eps = 0;
-	while (ternary(inc_y < 0, y_i >= y_f, y_i <= y_f))
+	while (ternary(inc_y < 0, pos_i->y >= pos_f->y, pos_i->y <= pos_f->y))
 	{
-		put_pixel(app, x_i, y_i, app->color);
+		put_pixel(app, pos_i->x, pos_i->y, app->color);
 		eps += abs(d_x);
 		if (eps >= abs(d_y))
 		{
-			x_i += inc_x;
+			pos_i->x += inc_x;
 			eps -= abs(d_y);
 		}
-		y_i += inc_y;
+		pos_i->y += inc_y;
 	}
 }
 
-void	bresenham(t_app *app, int x_init, int y_init, int x_final, int y_final)
+void	bresenham(t_app *app, t_coord *pos_i, t_coord *pos_f)
 {
 	int	d_x;
 	int	d_y;
 
-	d_x = x_final - x_init;
-	d_y = y_final - y_init;
+	d_x = pos_f->x - pos_i->x;
+	d_y = pos_f->y - pos_i->y;
 	if (abs(d_x) > abs(d_y))
-		bresenham_fast_x(app, x_init, y_init, x_final, y_final);
+		bresenham_fast_x(app, pos_i, pos_f);
 	else
-		bresenham_fast_y(app, x_init, y_init, x_final, y_final);
+		bresenham_fast_y(app, pos_i, pos_f);
 }
