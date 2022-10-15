@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/13 22:52:54 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/15 16:14:41 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef struct s_fdf
 	int		x_offset;
 	int		y_offset;
 	int		level_height;
+	double	angle_x;
+	double	angle_z;
+	double	angle_y;
 	t_list	*map_matrix;
 }				t_fdf;
 
@@ -51,7 +54,15 @@ typedef struct s_coord
 {
 	int	x;
 	int	y;
+
 }				t_coord;
+
+typedef struct s_real
+{
+	int	x;
+	int	z;
+	int	y;
+}				t_real;
 
 // General macros
 # define WIN_HEIGHT 720
@@ -103,13 +114,17 @@ void	bresenham(t_app *app, t_coord *pos_i, t_coord *pos_f);
 
 // Key handler functions
 int		translate_map(int keycode, t_app *app);
+int		rotate_map(int keycode, t_app *app);
+t_real	rotate_x(t_app *app, int x_real, int z_real, int y_real);
+t_real	rotate_y(t_app *app, int x_real, int z_real, int y_real);
+t_real	rotate_z(t_app *app, int x_real, int z_real, int y_real);
 int		zoom_map(int keycode, t_app *app);
 int		color_handler(int keycode, t_app *app);
 int		level_handler(int keycode, t_app *app);
 int		key_handler(int keycode, t_app *app);
 
 // Utils
-void	lstiter(t_list *lst, t_app *app, void (*f)(void *, void *, int));
+void	lstiter(t_list *lst, t_app *app, void (*f)(t_app *, t_list *, int));
 int		ternary(int codition, int return_true, int return_false);
 
 #endif
