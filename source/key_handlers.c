@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys_handlers.c                                    :+:      :+:    :+:   */
+/*   key_handlers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 19:27:08 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/13 22:50:30 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:37:00 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	color_handler(int keycode, t_app *app)
 int	level_handler(int keycode, t_app *app)
 {
 	if (keycode == GT_CODE)
-		app->fdf->level_height += 2;
+		app->fdf->level_height += 1;
 	else if (keycode == LT_CODE)
-		app->fdf->level_height -= 2;
+		app->fdf->level_height -= 1;
 	put_map(app);
 	return (1);
 }
@@ -64,6 +64,7 @@ int	level_handler(int keycode, t_app *app)
 int	key_handler(int keycode, t_app *app)
 {
 	static int	translation_keys[4] = {W_CODE, A_CODE, S_CODE, D_CODE};
+	static int	rotation_keys[4] = {UP_CODE, DOWN_CODE, LEFT_CODE, RIGHT_CODE};
 	static int	zoom_keys[2] = {PLUS_CODE, MINUS_CODE};
 	static int	colors_keys[2] = {Q_CODE, E_CODE};
 	static int	level_keys[2] = {GT_CODE, LT_CODE};
@@ -72,6 +73,8 @@ int	key_handler(int keycode, t_app *app)
 		shutdown_app(app);
 	else if (ft_memchr(translation_keys, keycode, sizeof(int) * 4))
 		translate_map(keycode, app);
+	else if (ft_memchr(rotation_keys, keycode, sizeof(int) * 4))
+		rotate_map(keycode, app);
 	else if (ft_memchr(zoom_keys, keycode, sizeof(int) * 2))
 		zoom_map(keycode, app);
 	else if (ft_memchr(colors_keys, keycode, sizeof(int) * 2))
