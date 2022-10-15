@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 19:27:08 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/15 15:37:00 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/15 16:35:44 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	translate_map(int keycode, t_app *app)
 {
-	if (keycode == W_CODE)
+	if (keycode == UP_KEY)
 		app->fdf->y_offset -= (app->fdf->edge_len / 2);
-	else if (keycode == A_CODE)
+	else if (keycode == LEFT_KEY)
 		app->fdf->x_offset -= (app->fdf->edge_len / 2);
-	else if (keycode == S_CODE)
+	else if (keycode == DOWN_KEY)
 		app->fdf->y_offset += (app->fdf->edge_len / 2);
-	else if (keycode == D_CODE)
+	else if (keycode == RIGHT_KEY)
 		app->fdf->x_offset += (app->fdf->edge_len / 2);
 	put_map(app);
 	return (1);
@@ -28,9 +28,9 @@ int	translate_map(int keycode, t_app *app)
 
 int	zoom_map(int keycode, t_app *app)
 {
-	if (keycode == PLUS_CODE)
+	if (keycode == PLUS_KEY)
 		app->fdf->zoom *= 2;
-	else if (keycode == MINUS_CODE && app->fdf->zoom / 2 > 0)
+	else if (keycode == MINUS_KEY && app->fdf->zoom / 2 > 0)
 		app->fdf->zoom /= 2;
 	put_map(app);
 	return (1);
@@ -42,9 +42,9 @@ int	color_handler(int keycode, t_app *app)
 							MANGO_CODE, VIOLET_CODE};
 	static int	cur_color = 0;
 
-	if (keycode == Q_CODE)
+	if (keycode == ONE_KEY)
 		cur_color = (cur_color - 1) % 5;
-	else if (keycode == E_CODE)
+	else if (keycode == TWO_KEY)
 		cur_color = (cur_color + 1) % 5;
 	app->color = colors[abs(cur_color)];
 	put_map(app);
@@ -53,9 +53,9 @@ int	color_handler(int keycode, t_app *app)
 
 int	level_handler(int keycode, t_app *app)
 {
-	if (keycode == GT_CODE)
+	if (keycode == GT_KEY)
 		app->fdf->level_height += 1;
-	else if (keycode == LT_CODE)
+	else if (keycode == LT_KEY)
 		app->fdf->level_height -= 1;
 	put_map(app);
 	return (1);
@@ -63,17 +63,17 @@ int	level_handler(int keycode, t_app *app)
 
 int	key_handler(int keycode, t_app *app)
 {
-	static int	translation_keys[4] = {W_CODE, A_CODE, S_CODE, D_CODE};
-	static int	rotation_keys[4] = {UP_CODE, DOWN_CODE, LEFT_CODE, RIGHT_CODE};
-	static int	zoom_keys[2] = {PLUS_CODE, MINUS_CODE};
-	static int	colors_keys[2] = {Q_CODE, E_CODE};
-	static int	level_keys[2] = {GT_CODE, LT_CODE};
+	static int	translate_keys[4] = {UP_KEY, DOWN_KEY, LEFT_KEY, RIGHT_KEY};
+	static int	rotation_keys[6] = {W_KEY, A_KEY, S_KEY, D_KEY, Q_KEY, E_KEY};
+	static int	zoom_keys[2] = {PLUS_KEY, MINUS_KEY};
+	static int	colors_keys[2] = {ONE_KEY, TWO_KEY};
+	static int	level_keys[2] = {GT_KEY, LT_KEY};
 
-	if (keycode == ESC_CODE)
+	if (keycode == ESC_KEY)
 		shutdown_app(app);
-	else if (ft_memchr(translation_keys, keycode, sizeof(int) * 4))
+	else if (ft_memchr(translate_keys, keycode, sizeof(int) * 4))
 		translate_map(keycode, app);
-	else if (ft_memchr(rotation_keys, keycode, sizeof(int) * 4))
+	else if (ft_memchr(rotation_keys, keycode, sizeof(int) * 6))
 		rotate_map(keycode, app);
 	else if (ft_memchr(zoom_keys, keycode, sizeof(int) * 2))
 		zoom_map(keycode, app);

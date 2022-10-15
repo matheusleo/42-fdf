@@ -6,15 +6,15 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:59:54 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/15 16:09:57 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/15 16:31:19 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-t_real	rotate_y(t_app *app, int x_real, int z_real, int y_real)
+t_coord	rotate_y(t_app *app, int x_real, int z_real, int y_real)
 {
-	t_real	rotated_coord;
+	t_coord	rotated_coord;
 	t_fdf	*fdf;
 
 	fdf = app->fdf;
@@ -24,9 +24,9 @@ t_real	rotate_y(t_app *app, int x_real, int z_real, int y_real)
 	return (rotated_coord);
 }
 
-t_real	rotate_z(t_app *app, int x_real, int z_real, int y_real)
+t_coord	rotate_z(t_app *app, int x_real, int z_real, int y_real)
 {
-	t_real	rotated_coord;
+	t_coord	rotated_coord;
 	t_fdf	*fdf;
 
 	fdf = app->fdf;
@@ -36,9 +36,9 @@ t_real	rotate_z(t_app *app, int x_real, int z_real, int y_real)
 	return (rotated_coord);
 }
 
-t_real	rotate_x(t_app *app, int x_real, int z_real, int y_real)
+t_coord	rotate_x(t_app *app, int x_real, int z_real, int y_real)
 {
-	t_real	rotated_coord;
+	t_coord	rotated_coord;
 	t_fdf	*fdf;
 
 	fdf = app->fdf;
@@ -50,14 +50,18 @@ t_real	rotate_x(t_app *app, int x_real, int z_real, int y_real)
 
 int	rotate_map(int keycode, t_app *app)
 {
-	if (keycode == RIGHT_CODE)
+	if (keycode == D_KEY)
 		app->fdf->angle_y -= 0.1;
-	else if (keycode == LEFT_CODE)
+	else if (keycode == A_KEY)
 		app->fdf->angle_y += 0.1;
-	else if (keycode == UP_CODE)
+	else if (keycode == S_KEY)
 		app->fdf->angle_x += 0.1;
-	else if (keycode == DOWN_CODE)
+	else if (keycode == W_KEY)
 		app->fdf->angle_x -= 0.1;
+	else if (keycode == Q_KEY)
+		app->fdf->angle_z -= 0.1;
+	else if (keycode == E_KEY)
+		app->fdf->angle_z += 0.1;
 	put_map(app);
 	return (1);
 }
