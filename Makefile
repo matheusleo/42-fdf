@@ -26,14 +26,14 @@ GREEN			:=	\033[0;32m
 
 $(NAME):	./libft/$(LIBFT) $(OBJS) $(HEADERS)
 			cp ./libft/$(LIBFT) .
-			$(CC) $(INCLUDES) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAGS)
+			$(CC) $(C_FLAGS) $(INCLUDES) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAGS)
 
 ./libft/$(LIBFT):
 		make -C libft/
 		make -C libft/ bonus
 
 ./objects/%.o:		./source/%.c
-			$(CC) -c $(INCLUDES) -o $@ $< $(MLX_FLAGS)
+			$(CC) $(C_FLAGS) -c $(INCLUDES) -o $@ $< $(MLX_FLAGS)
 
 all: 		$(NAME)
 
