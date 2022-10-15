@@ -6,13 +6,13 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:50:00 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 22:31:44 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/14 01:41:58 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-void	lstiter(t_list *lst, t_app *app, void (*f)(void *, void *, int))
+void	lstiter(t_list *lst, t_app *app, void (*f)(t_app *, t_list *, int))
 {
 	t_list	*cur_node;
 	int		node_pos;
