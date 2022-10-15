@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:51:52 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/13 22:48:34 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/15 16:14:05 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static int	calculate_x_screen(int x_real, int z_real, t_app *app)
 	int		edge;
 
 	fdf = app->fdf;
-	edge = fdf->edge_len * fdf->zoom;
-	x_screen = (x_real - z_real) * cos(0.46) * edge;
+	x_screen = (x_real - z_real) * cos(0.46);
 	return (x_screen + (WIN_WIDTH / 2 + fdf->x_offset));
 }
 
@@ -32,18 +31,25 @@ static int	calculate_y_screen(int x_real, int z_real, int y_real, t_app *app)
 	int		level;
 
 	fdf = app->fdf;
-	edge = fdf->edge_len * fdf->zoom;
 	level = y_real * fdf->level_height * fdf->zoom;
-	y_screen = ((x_real + z_real) * sin(0.46) - y_real + 1) * edge - level;
+	y_screen = ((x_real + z_real) * sin(0.46) - y_real + 1);
 	return (y_screen + (WIN_HEIGHT / 2 + fdf->y_offset));
 }
 
 static t_coord	calc_coord(t_app *app, int x_real, int z_real, int y_real)
 {
 	t_coord	coord;
+	t_real	c_real;
+	int		edge;
+	int		level;
 
-	coord.x = calculate_x_screen(x_real, z_real, app);
-	coord.y = calculate_y_screen(x_real, z_real, y_real, app);
+	edge = app->fdf->edge_len * app->fdf->zoom;
+	level = app->fdf->level_height;
+	c_real = rotate_x(app, x_real * edge, z_real * edge, y_real * level);
+	c_real = rotate_y(app, c_real.x, c_real.z, c_real.y);
+	c_real = rotate_z(app, c_real.x, c_real.z, c_real.y);
+	coord.x = calculate_x_screen(c_real.x, c_real.z, app);
+	coord.y = calculate_y_screen(c_real.x, c_real.z, c_real.y, app);
 	return (coord);
 }
 

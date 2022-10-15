@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 22:04:26 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/12 22:55:29 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/15 12:06:57 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	clean_win(t_app *app)
 	app->img = mlx_new_image(app->mlx, WIN_WIDTH, WIN_HEIGHT);
 	app->img_addr = mlx_get_data_addr(app->img, &(app->img_bpp), \
 		&(app->img_line_size), &(app->img_endian));
-	mlx_put_image_to_window(app->mlx, app->win, app->img, 0, 0);
 }
 
 int	shutdown_app(t_app *app)
