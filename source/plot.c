@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:51:52 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/16 15:59:43 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:35:25 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	put_line(t_app *app, t_list *line_node, int cur_row)
 	cur_col = 0;
 	while (cur_col < app->fdf->cols)
 	{
-		if (cur_col < app->fdf->cols - 1 && (line[cur_col + 1] + 1))
+		if (cur_col < app->fdf->cols - 1)
 		{
 			coord_i = calc_coord(app, cur_col, cur_row, line[cur_col]);
 			coord_f = calc_coord(app, cur_col + 1, cur_row, line[cur_col + 1]);
