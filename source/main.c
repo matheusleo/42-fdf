@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:24:01 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/16 16:15:40 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:33:36 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static t_fdf	init_fdf(void)
 	fdf.map_fd = 0;
 	fdf.edge_len = 15;
 	fdf.zoom = 2;
-	fdf.x_offset = 0;
-	fdf.y_offset = 0;
+	fdf.x_offset = 50;
+	fdf.y_offset = 50;
 	fdf.level_height = fdf.edge_len;
 	fdf.angle_x = 0;
 	fdf.angle_y = 0;
