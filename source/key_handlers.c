@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 19:27:08 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/15 16:35:44 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 12:56:28 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	translate_map(int keycode, t_app *app)
 		app->fdf->y_offset += (app->fdf->edge_len / 2);
 	else if (keycode == RIGHT_KEY)
 		app->fdf->x_offset += (app->fdf->edge_len / 2);
-	put_map(app);
+	render(app);
 	return (1);
 }
 
@@ -32,7 +32,7 @@ int	zoom_map(int keycode, t_app *app)
 		app->fdf->zoom *= 2;
 	else if (keycode == MINUS_KEY && app->fdf->zoom / 2 > 0)
 		app->fdf->zoom /= 2;
-	put_map(app);
+	render(app);
 	return (1);
 }
 
@@ -47,7 +47,7 @@ int	color_handler(int keycode, t_app *app)
 	else if (keycode == TWO_KEY)
 		cur_color = (cur_color + 1) % 5;
 	app->color = colors[abs(cur_color)];
-	put_map(app);
+	render(app);
 	return (1);
 }
 
@@ -57,7 +57,7 @@ int	level_handler(int keycode, t_app *app)
 		app->fdf->level_height += 1;
 	else if (keycode == LT_KEY)
 		app->fdf->level_height -= 1;
-	put_map(app);
+	render(app);
 	return (1);
 }
 

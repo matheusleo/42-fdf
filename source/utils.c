@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:50:00 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/14 01:41:58 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 13:33:34 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,11 @@ int	ternary(int codition, int return_true, int return_false)
 	if (codition)
 		return (return_true);
 	return (return_false);
+}
+
+int	render(t_app *app)
+{
+	put_map(app);
+	put_menu(app);
+	return (1);
 }

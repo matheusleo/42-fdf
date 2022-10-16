@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 22:04:26 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/15 12:06:57 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 13:13:58 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_app	*init_app(t_fdf *fdf)
 		&(app->img_line_size), &(app->img_endian));
 	app->color = WHITE_CODE;
 	app->fdf = fdf;
-	put_map(app);
+	render(app);
 	mlx_key_hook(app->win, key_handler, app);
 	mlx_hook(app->win, ON_DESTROY, 0L, shutdown_app, app);
 	mlx_loop(app->mlx);

@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/15 16:35:25 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 13:27:08 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,12 @@ int		color_handler(int keycode, t_app *app);
 int		level_handler(int keycode, t_app *app);
 int		key_handler(int keycode, t_app *app);
 
+// Menu
+int		put_menu(t_app *app);
+
 // Utils
 void	lstiter(t_list *lst, t_app *app, void (*f)(t_app *, t_list *, int));
 int		ternary(int codition, int return_true, int return_false);
+int		render(t_app *app);
 
 #endif

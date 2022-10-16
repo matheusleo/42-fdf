@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:59:54 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/15 16:31:19 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 14:29:53 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ int	rotate_map(int keycode, t_app *app)
 		app->fdf->angle_z -= 0.1;
 	else if (keycode == E_KEY)
 		app->fdf->angle_z += 0.1;
-	put_map(app);
+	render(app);
 	return (1);
 }
