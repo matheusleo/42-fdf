@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 12:43:06 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/16 16:33:08 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:42:04 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,9 @@ int	put_menu(t_app *app)
 	char		*header;
 
 	header = "        FDF MENU - mleonard";
-	counter = 0;
+	counter = -1;
 	mlx_string_put(app->mlx, app->win, 50, 50, MANGO_CODE, header);
-	while (menu[counter])
-	{
+	while (menu[++counter])
 		put_string(app, menu[counter], counter);
-		counter++;
-	}
 	return (1);
 }
