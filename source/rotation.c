@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:59:54 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/16 14:29:53 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:11:50 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 t_coord	rotate_y(t_app *app, int x_real, int z_real, int y_real)
 {
-	t_coord	rotated_coord;
-	t_fdf	*fdf;
+	t_coord		rotated_coord;
+	t_fdf		*fdf;
+	float		x;
+	float		z;
 
 	fdf = app->fdf;
-	rotated_coord.x = cos(fdf->angle_y) * x_real - sin(fdf->angle_y) * z_real;
+	x = x_real - (fdf->cols * fdf->edge_len) / 2;
+	z = z_real - (fdf->rows * fdf->edge_len) / 2;
+	rotated_coord.x = cos(fdf->angle_y) * x - sin(fdf->angle_y) * z;
 	rotated_coord.y = y_real;
-	rotated_coord.z = sin(fdf->angle_y) * x_real + cos(fdf->angle_y) * z_real;
+	rotated_coord.z = sin(fdf->angle_y) * x + cos(fdf->angle_y) * z;
 	return (rotated_coord);
 }
 
@@ -28,10 +32,12 @@ t_coord	rotate_z(t_app *app, int x_real, int z_real, int y_real)
 {
 	t_coord	rotated_coord;
 	t_fdf	*fdf;
+	float	x;
 
 	fdf = app->fdf;
-	rotated_coord.x = cos(fdf->angle_z) * x_real - sin(fdf->angle_z) * y_real;
-	rotated_coord.y = sin(fdf->angle_z) * x_real + cos(fdf->angle_z) * y_real;
+	x = x_real - (fdf->cols * fdf->edge_len) / 2;
+	rotated_coord.x = cos(fdf->angle_z) * x - sin(fdf->angle_z) * y_real;
+	rotated_coord.y = sin(fdf->angle_z) * x + cos(fdf->angle_z) * y_real;
 	rotated_coord.z = z_real;
 	return (rotated_coord);
 }
@@ -40,11 +46,13 @@ t_coord	rotate_x(t_app *app, int x_real, int z_real, int y_real)
 {
 	t_coord	rotated_coord;
 	t_fdf	*fdf;
+	float	z;
 
 	fdf = app->fdf;
+	z = z_real - (fdf->rows * fdf->edge_len) / 2;
 	rotated_coord.x = x_real;
-	rotated_coord.y = cos(fdf->angle_x) * y_real - sin(fdf->angle_x) * z_real;
-	rotated_coord.z = sin(fdf->angle_x) * y_real + cos(fdf->angle_x) * z_real;
+	rotated_coord.y = cos(fdf->angle_x) * y_real - sin(fdf->angle_x) * z;
+	rotated_coord.z = sin(fdf->angle_x) * y_real + cos(fdf->angle_x) * z;
 	return (rotated_coord);
 }
 
