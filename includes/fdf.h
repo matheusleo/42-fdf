@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/16 13:27:08 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 15:59:26 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_fdf
 	double	angle_x;
 	double	angle_z;
 	double	angle_y;
+	double	angle_proj;
 	t_list	*map_matrix;
 }				t_fdf;
 
@@ -69,6 +70,9 @@ typedef struct s_coord
 # define D_KEY 100
 # define Q_KEY 113
 # define E_KEY 101
+# define I_KEY 105
+# define P_KEY 112
+# define R_KEY 114
 # define GT_KEY 46
 # define LT_KEY 44
 # define ONE_KEY 49
@@ -110,13 +114,16 @@ void	bresenham(t_app *app, t_coord *pos_i, t_coord *pos_f);
 // Key handler functions
 int		translate_map(int keycode, t_app *app);
 int		rotate_map(int keycode, t_app *app);
-t_coord	rotate_x(t_app *app, int x_real, int z_real, int y_real);
-t_coord	rotate_y(t_app *app, int x_real, int z_real, int y_real);
-t_coord	rotate_z(t_app *app, int x_real, int z_real, int y_real);
 int		zoom_map(int keycode, t_app *app);
 int		color_handler(int keycode, t_app *app);
 int		level_handler(int keycode, t_app *app);
+int		projection_handler(int keycode, t_app *app);
 int		key_handler(int keycode, t_app *app);
+
+// Rotation functions
+t_coord	rotate_x(t_app *app, int x_real, int z_real, int y_real);
+t_coord	rotate_y(t_app *app, int x_real, int z_real, int y_real);
+t_coord	rotate_z(t_app *app, int x_real, int z_real, int y_real);
 
 // Menu
 int		put_menu(t_app *app);

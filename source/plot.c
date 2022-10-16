@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:51:52 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/15 16:33:52 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 15:59:43 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	calculate_x_screen(int x_real, int z_real, t_app *app)
 	int		x_screen;
 
 	fdf = app->fdf;
-	x_screen = (x_real - z_real) * cos(0.46);
+	x_screen = (x_real - z_real) * cos(fdf->angle_proj);
 	return (x_screen + (WIN_WIDTH / 2 + fdf->x_offset));
 }
 
@@ -28,7 +28,7 @@ static int	calculate_y_screen(int x_real, int z_real, int y_real, t_app *app)
 	int		y_screen;
 
 	fdf = app->fdf;
-	y_screen = ((x_real + z_real) * sin(0.46) - y_real + 1);
+	y_screen = ((x_real + z_real) * sin(fdf->angle_proj) - y_real + 1);
 	return (y_screen + (WIN_HEIGHT / 2 + fdf->y_offset));
 }
 
