@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:38:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/16 15:59:26 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:23:18 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ int		put_menu(t_app *app);
 // Utils
 void	lstiter(t_list *lst, t_app *app, void (*f)(t_app *, t_list *, int));
 int		ternary(int codition, int return_true, int return_false);
+void	reset(t_app *app);
 int		render(t_app *app);
 
 #endif

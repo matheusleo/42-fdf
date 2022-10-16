@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:50:00 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/16 13:33:34 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:25:21 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,17 @@ int	render(t_app *app)
 	put_map(app);
 	put_menu(app);
 	return (1);
+}
+
+void	reset(t_app *app)
+{
+	app->fdf->edge_len = 15;
+	app->fdf->zoom = 2;
+	app->fdf->level_height = 15;
+	app->fdf->angle_x = 0;
+	app->fdf->angle_y = 0;
+	app->fdf->angle_z = 0;
+	app->fdf->angle_proj = 0.46;
+	app->color = WHITE_CODE;
+	render(app);
 }

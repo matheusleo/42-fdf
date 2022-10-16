@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 19:27:08 by mleonard          #+#    #+#             */
-/*   Updated: 2022/10/16 16:03:01 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:23:01 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ int	key_handler(int keycode, t_app *app)
 		level_handler(keycode, app);
 	else if (keycode == I_KEY || keycode == P_KEY)
 		projection_handler(keycode, app);
+	else if (keycode == R_KEY)
+		reset(app);
 	return (1);
 }
